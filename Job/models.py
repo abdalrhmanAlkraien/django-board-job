@@ -25,7 +25,7 @@ class job (models.Model):
     vacancy=models.IntegerField(default=1)
     salary=models.IntegerField(default=0)
     experience=models.IntegerField(default=0)
-    img=models.ImageField(upload_to=image_upload)
+    img=models.ImageField(upload_to='')
     categore=models.ForeignKey(Categore,on_delete=models.CASCADE)
     def __str__(self):
         return self.title
