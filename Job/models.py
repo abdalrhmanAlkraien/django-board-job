@@ -1,4 +1,6 @@
 from django.db import models
+from django.contrib.auth.models import User
+from django.template.defaultfilters import slugify
 
 # Create your models here.
 JOB_TYPE = (
@@ -27,9 +29,10 @@ class job (models.Model):
     experience=models.IntegerField(default=0)
     img=models.ImageField(upload_to='')
     categore=models.ForeignKey(Categore,on_delete=models.CASCADE)
+    owner=models.ForeignKey(User,related_name="job_user",on_delete=models.CASCADE)
     slug=models.SlugField(blank=True,null=True)
     def save(self,*args,**kwargs):
-        self.slug=self.title.replace(' ','-')
+        self.slug=slugify(self.title)
         super(job,self).save(*args,**kwargs)
     def __str__(self):
         return self.title
