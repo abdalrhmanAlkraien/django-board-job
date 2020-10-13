@@ -42,7 +42,8 @@ INSTALLED_APPS = [
     'Job',
     'Home',
     'Blog',
-    'Contact'
+    'Contact',
+    'bootstrap4'
     
 
 ]
