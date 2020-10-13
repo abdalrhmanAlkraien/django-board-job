@@ -27,6 +27,10 @@ class job (models.Model):
     experience=models.IntegerField(default=0)
     img=models.ImageField(upload_to='')
     categore=models.ForeignKey(Categore,on_delete=models.CASCADE)
+    slug=models.SlugField(blank=True,null=True)
+    def save(self,*args,**kwargs):
+        self.slug=self.title.replace(' ','-')
+        super(job,self).save(*args,**kwargs)
     def __str__(self):
         return self.title
 
