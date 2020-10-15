@@ -1,0 +1,15 @@
+{% extends 'base_genirc.html' %}
+{% load bootstrap4%}
+{% block body %}
+
+  <form action="" method="post">
+  {% csrf_token %}
+     {% bootstrap_form form %}
+     {% buttons %}
+    <input type="submit" class="btn btn-primary btn-lg " value="Reset password">
+    {% endbuttons %}
+  </form>
+
+
+{% endblock  %}
+
