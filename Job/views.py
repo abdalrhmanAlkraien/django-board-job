@@ -28,16 +28,18 @@ def job_details(request,slug):
     context={'jobs':jobs,'form':form}
     return render(request,'job\job_detalis.html',context)
 
+from django.contrib.auth.decorators import login_required
+@login_required
 def add_job(request):
     if request.method=="POST":
         form=addjob(request.POST,request.FILES)
         if form.is_valid():
             myform=form.save(commit=False)
             myform.owner=request.user
-            myform.save()
-            print("ok!!!!!!")
+            myform.save() 
             return redirect(reverse("Job:list_job"))
     else:
         form=addjob()
     context={'form':form}
     return render(request,'job/jobadd.html',context)
+    

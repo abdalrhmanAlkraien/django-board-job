@@ -7,11 +7,13 @@ from django.dispatch import receiver
 
 class City(models.Model):
     name=models.CharField(max_length=30)
+    def __str__(self):
+        return str(self.name)
 
 class profile(models.Model):
     user=models.OneToOneField(User,  on_delete=models.CASCADE)
     phone_number=models.CharField(max_length=10)
-    image=models.ImageField(upload_to="profile/")
+    image=models.ImageField(upload_to="profile/img")
     city=models.ForeignKey(City,related_name="prfoile_city",on_delete=models.CASCADE,blank=True,null=True)
     def __str__(self):
         return str(self.user)

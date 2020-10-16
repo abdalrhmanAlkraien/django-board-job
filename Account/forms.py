@@ -7,3 +7,13 @@ class SignUpForm(UserCreationForm):
     class Meta:
         model=User
         fields=['username','email','password1','password2']
+
+class Userform(forms.ModelForm):
+    class Meta:
+        model=User
+        fields=['username','first_name','last_name','email']
+
+class Profilform(forms.ModelForm):
+    class Meta:
+        model=profile
+        fields=['phone_number','city','image']

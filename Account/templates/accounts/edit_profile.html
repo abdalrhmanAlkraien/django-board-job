@@ -4,9 +4,10 @@
 
   <form action="" method="post">
   {% csrf_token %}
-     {% bootstrap_form form %}
+    {% bootstrap_form userform %}
+     {% bootstrap_form profileform %}
      {% buttons %}
-    <input type="submit" class="btn btn-primary btn-lg " value="Reset password">
+    <input type="submit" class="btn btn-primary btn-lg " value="Save Change">
     {% endbuttons %}
   </form>
 

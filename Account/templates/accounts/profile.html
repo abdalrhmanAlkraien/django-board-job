@@ -33,7 +33,7 @@
                                 <li>Phone: <span>{{profile.phone_number}}</span></li>
                                 <li>Address: <span>{{profile.city}}</span></li>
                             </ul>
-                            <a href="#" class="btn btn-primary mt-4 btn-lg">Edit profile</a>
+                            <a href={% url 'accounts:edit_profile' %} class="btn btn-primary mt-4 btn-lg">Edit profile</a>
                         </div>
                     </div>
                     
