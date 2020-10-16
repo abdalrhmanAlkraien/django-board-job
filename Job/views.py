@@ -4,13 +4,16 @@ from django.core.paginator import Paginator
 from .forms import Applyform,addjob
 from django.contrib.auth import user_logged_in
 from django.urls import reverse
+from .filters import jobFilter
 
 def job_list(request):
     jobs=job.objects.all()
+    myfilter=jobFilter(request.GET,queryset=jobs)
+    jobs=myfilter.qs
     paginator = Paginator(jobs, 3) 
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
-    context={'jobs':page_obj}
+    context={'jobs':page_obj,'filter':myfilter}
     return render(request,'job\job_list.html',context)
 
 def job_details(request,slug):
